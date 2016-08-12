@@ -1,0 +1,43 @@
+<div>
+<h1>All Listed Employees</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Emp_Id</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>Date_Of_Birth</th>
+      <th>Date_Of_Joining</th>
+      <th>Email_Id</th>
+      <th>Gender</th>
+      <th>Address</th>
+      <th>Department</th>
+      <th>Action</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @employees.each do |employee|%>
+      <tr>
+        <td><%= employee.id %></td>
+        <td><%= employee.fname %></td>
+        <td><%= employee.lname %></td>
+        <td><%= employee.dob %></td>
+        <td><%= employee.hdate %></td>
+        <td><%= employee.email %></td>
+        <td><%= employee.gender %></td>
+        <td><%= employee.address %></td>
+        <td><%= employee.dept %></td>
+        <td><%= link_to 'Show',employee_path(employee) %> |
+        <%= link_to 'Edit', edit_employee_path(employee)%> |
+        <%= link_to 'Destroy', delete_employee_path(employee),
+              data: { confirm: 'Are you sure?' } %>
+
+        </td>   
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<%= link_to 'New Employee', new_employee_path %>

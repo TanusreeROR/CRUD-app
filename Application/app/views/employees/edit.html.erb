@@ -1,0 +1,45 @@
+<h1> Editing Employee Details </h1>
+
+ <%= form_for @employee,:url=>{'action'=>'update'},method: :post do |f| %>
+<div>
+  <%= f.label :First_Name %><br>
+  <%= f.text_field:fname %>
+</div>
+<div>
+  <%= f.label :Last_Name %><br>
+  <%= f.text_field:lname %>
+</div>
+<div>
+  <%= f.label :DOB %><br>
+  <%= f.date_select(:dob, :start_year => 60.years.ago.year, :end_year => Date.today.year, :default => Date.today) %>
+</div>
+<div>
+    <%= f.label :Joining_Date %><br />
+    <%= f.date_select(:hdate, :order => [:month, :day, :year])  %>
+    
+</div> 
+<div>
+  <%= f.label :Email_id %><br>
+  <%= f.text_field:email %>
+</div>
+<div>
+    <%= f.label :Gender %><br />
+    <%= f.radio_button :gender, 'Male' %> Male<br />
+    <%= f.radio_button :gender, 'Female' %> Female<br />
+</div>
+<div>
+  <%= f.label :Address %><br>
+  <%= f.text_area:address %>
+</div>
+<div>
+  <%= f.label :Department %><br>
+  <%= f.select(:dept,[["Accounting","Accounting"],["Manager","Manager"],["Development","Development"],["Sales","Sales"],["Analyst","Analyst"],["HR","HR"],["Clerk","Clerk"]])%>  
+
+</div>
+<div>
+ <%= f.submit:UpdatePosts %>
+</div>    
+<% end %>
+
+<%= link_to 'Show', employee_path %>|
+<%= link_to 'Back', employees_path %>
